@@ -1,0 +1,49 @@
+schema {
+  query: Query
+}
+
+type Query {
+  me: User
+  users: [User]
+  category(id: ID!): Category
+  categories: [Category]
+  pet(id: ID!): Pet
+  pets: [Pet]
+}
+
+type User {
+  id: ID!
+  username: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  phone: String!
+  userStatus: Int!
+}
+
+type Category {
+  id: ID!
+  name: String!
+}
+
+type Pet {
+  id: ID!
+  category: Category
+  name: String!
+  photoUrls: [String!]
+  tags: [Tag]
+  status: Status
+}
+
+type Tag {
+  id: ID!
+  name: String!
+}
+
+# pet status in the store
+enum Status {
+  available
+  pending
+  sold
+}
